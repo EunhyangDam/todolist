@@ -17,7 +17,7 @@ Vue.createApp({
     };
   },
   created() {
-    if (JSON.parse(localStorage.getItem("taskList")) !== "") {
+    if (localStorage.getItem("taskList") !== null) {
       this.state.taskList = JSON.parse(localStorage.getItem("taskList"));
     }
     this.state.totalLength = this.state.taskList.length;

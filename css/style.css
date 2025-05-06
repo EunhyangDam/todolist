@@ -131,3 +131,17 @@
   border-top: 1px solid #ccc;
   text-align: center;
 }
+
+@media all and (max-width: 570px) {
+  #root .container #header .input-container input[type=datetime-local i] {
+    width: 18px;
+  }
+  #root .container #main {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  #root .container #main section {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

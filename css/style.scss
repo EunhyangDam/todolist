@@ -147,3 +147,25 @@
     }
   }
 }
+
+@media all and (max-width: 570px) {
+  #root {
+    .container {
+      #header {
+        .input-container {
+          input[type="datetime-local" i] {
+            width: 18px;
+          }
+        }
+      }
+      #main {
+        flex-wrap: wrap;
+        gap: 0;
+        section {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
