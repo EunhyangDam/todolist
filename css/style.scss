@@ -1,0 +1,149 @@
+@import url(./reset.css);
+#root {
+  width: 100%;
+  padding-block: 40px;
+  .container {
+    max-width: 800px;
+    width: 100%;
+    margin-inline: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    #header {
+      font-size: 2rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      .text {
+        margin-right: 20px;
+      }
+      .input-container {
+        border-bottom: 1px solid #333;
+        flex-grow: 1;
+        display: flex;
+        input {
+          border: 0;
+          &:focus {
+            outline: 0;
+          }
+          &[type="text"] {
+            flex-grow: 1;
+          }
+          &[type="datetime-local" i] {
+            font-family: "Pretendard Variable";
+          }
+        }
+      }
+    }
+    #main {
+      display: flex;
+      gap: 1rem;
+      section {
+        width: 50%;
+        padding: 10px;
+        border-radius: 10px;
+        &.todo {
+          background: #ebebeb;
+        }
+        &.done {
+          background: #dee9f4;
+        }
+        dl {
+          dt {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+            h2 {
+              font-size: 1.5rem;
+              font-weight: 600;
+            }
+          }
+          dd {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            .txt {
+              p {
+                &.expire {
+                  font-size: 1rem;
+                  font-weight: 400;
+                  color: #999;
+                }
+              }
+            }
+            form {
+              a {
+                margin-right: 0.5rem;
+                opacity: 0;
+                transition: 0.3s;
+                i {
+                }
+              }
+              input[type="checkbox"] {
+                width: 17px;
+                height: 17px;
+                appearance: none;
+                background: url(../img/circle-check-regular.svg);
+                background-repeat: no-repeat;
+                &:checked {
+                  background: url(../img/circle-check-solid.svg);
+                }
+              }
+            }
+            &:hover {
+              form {
+                a {
+                  opacity: 1;
+                  i {
+                  }
+                }
+              }
+            }
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+        ul {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+          width: 100%;
+          li {
+            padding-inline: 2px;
+            a {
+              display: block;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: #aaa;
+              text-indent: -9999px;
+              overflow: hidden;
+            }
+            &.active {
+              a {
+                background: #999;
+              }
+            }
+          }
+        }
+      }
+      padding-bottom: 10px;
+    }
+    #footer {
+      padding-top: 8px;
+      border-top: 1px solid #ccc;
+      text-align: center;
+    }
+  }
+}
