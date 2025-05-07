@@ -1,91 +1,134 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./script/lib/vue.global.js"></script>
     <script defer src="./script/index.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="https://kit.fontawesome.com/0a4e914825.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/0a4e914825.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta property="og:title" content="이은지 투두리스트" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./img/thumnail.jpg" />
+    <meta property="og:description" content="VUE 프로젝트" />
     <title>To-do List</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root">
-        <div class="container">
-            <header id="header">
-                <div class="text">
-                    <p>Your</p>
-                    <p>workspace.</p>
-                </div>
-                <div class="input-container">
-                    <input type="text" name="newTask" id="newTask" v-model="state.newTask"
-                        @keyUp.enter="keyUpTaskSubmit"><input type="datetime-local" name="newExpire" id="newExpire"
-                        v-model="state.newExpire" @keyUp.enter="keyUpTaskSubmit">
-                </div>
-            </header>
-            <main id="main">
-                <section class="todo">
-                    <dl>
-                        <dt>
-                            <h2>To Do</h2><i class="fa-solid fa-bars-progress"></i>
-                        </dt>
-                        <template v-for="el, idx in state.taskList" :key="el.id">
-                            <dd v-if="el.done===false &&  (idx >=state.listStart && idx < state.listEnd)">
-                                <div class=" txt">
-                                    <a href="#" @click="clickEdit(el)">
-                                        <p class="task">{{el.task}}</p>
-                                    </a>
-                                    <p class="expire">{{el.expire}}</p>
-                                </div>
-                                <form>
-                                    <a href="#" @click.prevent="clickDelete(el.id)"><i class="fa-solid fa-x"></i></a>
-                                    <input type="checkbox" name="chkBox" id="chkBox" @click="clickChk($event)"
-                                        v-model="el.done">
-                                </form>
-                            </dd>
-                        </template>
-                    </dl>
-                    <ul>
-                        <template v-for="num, idx in state.pages">
-                            <li><a href="#" @click.prevent="clickPageTransition(num)">{{num}}</a></li>
-                        </template>
-                    </ul>
-                </section>
-                <section class="done">
-                    <dl>
-                        <dt>
-                            <h2>Complete</h2><i class="fa-solid fa-check"></i>
-                        </dt>
-                        <template v-for="el, idx in state.taskList" :key="el.id">
-                            <dd v-if="el.done===true &&  (idx >=state.listStart && idx < state.listEnd)">
-                                <div class=" txt">
-                                    <a href="#" @click="clickEdit(el)">
-                                        <p class="task">{{el.task}}</p>
-                                    </a>
-                                    <p class="expire">{{el.expire}}</p>
-                                </div>
-                                <form>
-                                    <a href="#" @click.prevent="clickDelete(el.id)"><i class="fa-solid fa-x"></i></a>
-                                    <input type="checkbox" name="chkBox" id="chkBox" @click="clickChk($event)"
-                                        v-model="el.done">
-                                </form>
-                            </dd>
-                        </template>
-                    </dl>
-                    <ul>
-                        <template v-for="num, idx in state.pages">
-                            <li><a href="#" @click.prevent="clickPageTransition(num)">{{num}}</a></li>
-                        </template>
-                    </ul>
-                </section>
-            </main>
-            <footer id="footer">
-                <p>Copyright 2025. Eunhyang_Lee All Right Reserved.</p>
-            </footer>
-        </div>
+      <div class="container">
+        <header id="header">
+          <div class="text">
+            <p>Your</p>
+            <p>workspace.</p>
+          </div>
+          <div class="input-container">
+            <input
+              type="text"
+              name="newTask"
+              id="newTask"
+              v-model="state.newTask"
+              @keyUp.enter="keyUpTaskSubmit"
+            /><input
+              type="datetime-local"
+              name="newExpire"
+              id="newExpire"
+              v-model="state.newExpire"
+              @keyUp.enter="keyUpTaskSubmit"
+            />
+          </div>
+        </header>
+        <main id="main">
+          <section class="todo">
+            <dl>
+              <dt>
+                <h2>To Do</h2>
+                <i class="fa-solid fa-bars-progress"></i>
+              </dt>
+              <template v-for="el, idx in state.taskList" :key="el.id">
+                <dd
+                  v-if="el.done===false &&  (idx >=state.listStart && idx < state.listEnd)"
+                >
+                  <div class="txt">
+                    <a href="#" @click="clickEdit(el)">
+                      <p class="task">{{el.task}}</p>
+                    </a>
+                    <p class="expire">{{el.expire}}</p>
+                  </div>
+                  <form>
+                    <a href="#" @click.prevent="clickDelete(el.id)"
+                      ><i class="fa-solid fa-x"></i
+                    ></a>
+                    <input
+                      type="checkbox"
+                      name="chkBox"
+                      id="chkBox"
+                      @click="clickChk($event)"
+                      v-model="el.done"
+                    />
+                  </form>
+                </dd>
+              </template>
+            </dl>
+            <ul>
+              <template v-for="num, idx in state.pages">
+                <li>
+                  <a href="#" @click.prevent="clickPageTransition(num)"
+                    >{{num}}</a
+                  >
+                </li>
+              </template>
+            </ul>
+          </section>
+          <section class="done">
+            <dl>
+              <dt>
+                <h2>Complete</h2>
+                <i class="fa-solid fa-check"></i>
+              </dt>
+              <template v-for="el, idx in state.taskList" :key="el.id">
+                <dd
+                  v-if="el.done===true &&  (idx >=state.listStart && idx < state.listEnd)"
+                >
+                  <div class="txt">
+                    <a href="#" @click="clickEdit(el)">
+                      <p class="task">{{el.task}}</p>
+                    </a>
+                    <p class="expire">{{el.expire}}</p>
+                  </div>
+                  <form>
+                    <a href="#" @click.prevent="clickDelete(el.id)"
+                      ><i class="fa-solid fa-x"></i
+                    ></a>
+                    <input
+                      type="checkbox"
+                      name="chkBox"
+                      id="chkBox"
+                      @click="clickChk($event)"
+                      v-model="el.done"
+                    />
+                  </form>
+                </dd>
+              </template>
+            </dl>
+            <ul>
+              <template v-for="num, idx in state.pages">
+                <li>
+                  <a href="#" @click.prevent="clickPageTransition(num)"
+                    >{{num}}</a
+                  >
+                </li>
+              </template>
+            </ul>
+          </section>
+        </main>
+        <footer id="footer">
+          <p>Copyright 2025. Eunhyang_Lee All Right Reserved.</p>
+        </footer>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
